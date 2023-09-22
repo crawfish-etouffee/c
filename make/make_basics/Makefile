@@ -1,12 +1,20 @@
-# -*- MakeFile -*-
 CC=gcc
 CFLAGS=-g -Wall
+SRC=src
+OBJ=obj
+SRCS=$(wildcard $(SRC)/*.c)
+OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
-hello: hello.c
-	$(CC) $(CFLAGS) -o hello hello.c
+BINDIR=bin
+BIN = $(BINDIR)/hello
 
-test.o: test.c
-	$(CC) $(CFLAGS) -c test.c -o test.o
-		
+all:$(BIN)
+
+$(BIN): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+$(OBJ)/%.o: $(SRC)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f hello test.o
+	$(RM) -r $(BINDIR)/* $(OBJ)/*
