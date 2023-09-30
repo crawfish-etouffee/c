@@ -1,0 +1,17 @@
+        -:    0:Source:pointer_struct.c
+        -:    0:Graph:pointer_struct.gcno
+        -:    0:Data:pointer_struct.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdio.h>
+        -:    2:
+        -:    3:struct abc {
+        -:    4:    int x;
+        -:    5:    int y;
+        -:    6:};
+        -:    7:
+        1:    8:int main() {
+        1:    9:    struct abc a = {0, 1};
+        1:   10:    struct abc *ptr = &a;
+        1:   11:    printf("%d %d", ptr->x, ptr->y);
+        1:   12:    return 0;
+        -:   13:}
